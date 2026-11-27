@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Trang tổng hợp các lớp học thêm và luyện thi Khối A01, ĐGNL V-ACT, IELTS gần Trường THPT Nguyễn Khuyến Quận 10 — Dự án Google Sites của Lưu Văn Hoan, lớp 12L2." />
+  <title>Lớp Học Thêm &amp; Ôn Thi NK Quận 10 — Lưu Văn Hoan (12L2)</title>
+
+  <!-- Phông chữ hỗ trợ đầy đủ dấu tiếng Việt -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Lora:wght@600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root { /* Bảng màu lấy cảm hứng trực tiếp từ logo Trường THPT Nguyễn Khuyến Q.10 */ --nk-green: #1f6e3d; --nk-green-dark: #16512c; --nk-green-soft: #eef5f0; --nk-green-line: #cfe0d4; --nk-red: #b83227; --nk-red-soft: #fdf2f1; --nk-gold: #9a6b00; --nk-gold-soft: #fdf8e8; --bg-page: #f6f7f3; --bg-card: #ffffff; --border: #dfe4dc; --border-strong: #c8d1c4; --text-main: #1d2620; --text-sub: #4d5b52; --text-muted: #6c7a71; --font-sans: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; --font-serif: 'Lora', Georgia, 'Times New Roman', serif; --radius: 10px; --shadow-sm: 0 2px 8px rgba(24, 42, 30, 0.06); --shadow-md: 0 8px 20px rgba(24, 42, 30, 0.10); }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); font-size: 15px; line-height: 1.65; color: var(--text-main); background-color: var(--bg-page); -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font-family: inherit; }
+    .container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+    /* ===== THANH THÔNG TIN HỌC SINH TRÊN CÙNG ===== */
+    .student-topbar { background-color: var(--nk-green-dark); color: #f3f7f4; font-size: 13px; padding: 8px 0; border-bottom: 2px solid #d7a62a; }
+    .student-topbar-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 16px; }
+    .student-credit { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .class-tag { display: inline-block; background-color: #ffffff; color: var(--nk-green-dark); font-weight: 700; font-size: 12px; padding: 1px 8px; border-radius: 4px; letter-spacing: 0.02em; }
+    .student-topbar strong { color: #ffffff; font-weight: 700; }
+    .school-note { color: #d7e7dc; font-size: 12.5px; }
+    /* ===== HEADER CHÍNH VỚI LOGO NK TO BÊN TRÁI ===== */
+    .site-header { position: sticky; top: 0; z-index: 30; background-color: rgba(255, 255, 255, 0.97); border-bottom: 1px solid var(--border); box-shadow: 0 1px 6px rgba(24, 42, 30, 0.04); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 12px 0; }
+    .brand-link { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    /* Logo THPT Nguyễn Khuyến to, rõ nét bên trái trên cùng */
+    .nk-logo-big { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; flex-shrink: 0; background-color: #ffffff; border: 2px solid var(--nk-green-line); box-shadow: 0 2px 10px rgba(31, 110, 61, 0.16); padding: 2px; }
+    .brand-text h2 { font-family: var(--font-serif); font-size: 20px; line-height: 1.25; color: var(--nk-green-dark); font-weight: 700; }
+    .brand-text p { font-size: 13px; color: var(--text-sub); margin-top: 2px; }
+    .main-nav { display: flex; align-items: center; gap: 6px; }
+    .nav-link { font-size: 14px; font-weight: 500; color: var(--text-sub); padding: 8px 12px; border-radius: 6px; transition: background-color 0.18s ease, color 0.18s ease; white-space: nowrap; }
+    .nav-link:hover, .nav-link:focus-visible { background-color: var(--nk-green-soft); color: var(--nk-green-dark); outline: none; }
+    .selected-pill-link { display: inline-flex; align-items: center; gap: 6px; margin-left: 6px; padding: 8px 14px; border-radius: 6px; background-color: var(--nk-green); color: #ffffff; font-size: 13.5px; font-weight: 600; white-space: nowrap; transition: background-color 0.18s ease; }
+    .selected-pill-link:hover { background-color: var(--nk-green-dark); }
+    .selected-count { display: inline-flex; align-items: center; justify-content: center; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px; background-color: #ffffff; color: var(--nk-green-dark); font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .menu-toggle { display: none; align-items: center; justify-content: center; width: 40px; height: 40px; border: 1px solid var(--border-strong); border-radius: 8px; background: #ffffff; color: var(--text-main); cursor: pointer; }
+    .mobile-nav { display: none; border-top: 1px solid var(--border); background-color: #ffffff; padding: 10px 20px 14px; }
+    .mobile-nav.open { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .mobile-nav a { padding: 9px 12px; border: 1px solid var(--border); border-radius: 7px; font-size: 13.5px; font-weight: 500; color: var(--text-main); background-color: var(--bg-page); text-align: center; }
+    /* ===== PHẦN GIỚI THIỆU (HERO GỌN GÀNG, CHÂN THẬT) ===== */
+    main { padding: 28px 0 48px; }
+    section { scroll-margin-top: 112px; }
+    .hero-card { background-color: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 28px; display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 28px; align-items: center; }
+    .hero-kicker { font-size: 12.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--nk-green); margin-bottom: 10px; }
+    .hero-title { font-family: var(--font-serif); font-size: 30px; line-height: 1.32; color: var(--text-main); font-weight: 700; margin-bottom: 14px; }
+    .hero-desc { color: var(--text-sub); font-size: 15px; line-height: 1.7; margin-bottom: 20px; }
+    .hero-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 14px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+    .fact-item span { display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 2px; }
+    .fact-item strong { font-size: 14px; color: var(--text-main); font-weight: 600; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 18px; border-radius: 7px; font-size: 14px; font-weight: 600; cursor: pointer; border: 1px solid transparent; transition: background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease; }
+    .btn-primary { background-color: var(--nk-green); color: #ffffff; }
+    .btn-primary:hover { background-color: var(--nk-green-dark); }
+    .btn-outline { background-color: #ffffff; color: var(--nk-green-dark); border-color: var(--border-strong); }
+    .btn-outline:hover { background-color: var(--nk-green-soft); border-color: var(--nk-green); }
+    .hero-photo-box { margin: 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; background-color: #fafbf9; }
+    .hero-photo-box img { width: 100%; aspect-ratio: 16 / 10.5; object-fit: cover; }
+    .hero-photo-box figcaption { font-size: 12.5px; color: var(--text-sub); padding: 9px 12px; border-top: 1px solid var(--border); background-color: #fafbf8; }
+    /* ===== TIÊU ĐỀ MỤC CHUNG ===== */
+    .section-block { margin-top: 40px; }
+    .section-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+    .section-head h2 { font-family: var(--font-serif); font-size: 24px; line-height: 1.3; color: var(--text-main); font-weight: 700; }
+    .section-head p { font-size: 14px; color: var(--text-sub); margin-top: 4px; }
+    /* ===== THANH LỌC MÔN HỌC & LẬT TẤT CẢ ===== */
+    .course-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px; }
+    .filter-group { display: flex; flex-wrap: wrap; gap: 8px; }
+    .filter-btn { padding: 7px 14px; border-radius: 6px; border: 1px solid var(--border-strong); background-color: #ffffff; color: var(--text-sub); font-size: 13.5px; font-weight: 500; cursor: pointer; transition: all 0.16s ease; }
+    .filter-btn:hover { border-color: var(--nk-green); color: var(--nk-green-dark); }
+    .filter-btn.active { background-color: var(--nk-green); border-color: var(--nk-green); color: #ffffff; font-weight: 600; }
+    .flip-all-btn { padding: 7px 13px; border-radius: 6px; border: 1px dashed var(--nk-green); background-color: var(--nk-green-soft); color: var(--nk-green-dark); font-size: 13px; font-weight: 600; cursor: pointer; transition: background-color 0.16s ease; }
+    .flip-all-btn:hover { background-color: #dfeee3; }
+    /* ===== LƯỚI THẺ LẬT 3D (FLIP CARDS) ===== */
+    .courses-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .flip-card { perspective: 1100px; height: 478px; cursor: pointer; outline: none; }
+    .flip-card:focus-visible .flip-card-inner { box-shadow: 0 0 0 3px rgba(31, 110, 61, 0.35); }
+    .flip-card-inner { position: relative; width: 100%; height: 100%; border-radius: var(--radius); transform-style: preserve-3d; transition: transform 0.58s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.22s ease; box-shadow: var(--shadow-sm); }
+    .flip-card:hover .flip-card-inner { box-shadow: var(--shadow-md); }
+    .flip-card.is-flipped .flip-card-inner { transform: rotateY(180deg); }
+    .card-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; background-color: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+    .flip-card.is-selected .card-face { border-color: var(--nk-green); }
+    /* Mặt trước: ảnh cơ bản + thông tin gọn */
+    .card-front-photo { width: 100%; height: 232px; object-fit: cover; background-color: #e8ece6; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+    .card-front-body { padding: 15px 16px 14px; display: flex; flex-direction: column; flex: 1; }
+    .card-meta-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px; }
+    .subject-label { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 4px; background-color: var(--nk-green-soft); color: var(--nk-green-dark); }
+    .subject-label.cat-ly { background-color: #eef3fa; color: #214e8a; }
+    .subject-label.cat-anh { background-color: var(--nk-gold-soft); color: var(--nk-gold); }
+    .subject-label.cat-vact { background-color: var(--nk-red-soft); color: var(--nk-red); }
+    .picked-badge { font-size: 11.5px; font-weight: 700; color: var(--nk-green); }
+    .card-front-title { font-family: var(--font-serif); font-size: 17px; line-height: 1.38; color: var(--text-main); font-weight: 700; margin-bottom: 6px; }
+    .card-front-summary { font-size: 13.5px; line-height: 1.55; color: var(--text-sub); }
+    .card-front-foot { margin-top: auto; padding-top: 11px; border-top: 1px solid #edf0eb; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .course-price { font-size: 15.5px; font-weight: 700; color: var(--nk-green-dark); font-variant-numeric: tabular-nums; }
+    .course-price small { font-size: 12px; font-weight: 400; color: var(--text-muted); }
+    .flip-hint { font-size: 12.5px; font-weight: 600; color: var(--nk-green); display: inline-flex; align-items: center; gap: 4px; }
+    .flip-card:hover .flip-hint { text-decoration: underline; }
+    /* Mặt sau: lật ra hiện chi tiết đầy đủ */
+    .card-back { transform: rotateY(180deg); background-color: #fdfdfb; }
+    .card-back-head { background-color: var(--nk-green-soft); border-bottom: 1px solid var(--nk-green-line); padding: 11px 16px; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .card-back-head span { font-size: 12px; font-weight: 700; color: var(--nk-green-dark); text-transform: uppercase; letter-spacing: 0.03em; }
+    .flip-back-btn { border: 1px solid var(--nk-green-line); background-color: #ffffff; color: var(--nk-green-dark); font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 5px; cursor: pointer; }
+    .flip-back-btn:hover { background-color: #e3f0e7; }
+    .card-back-body { padding: 13px 16px 14px; display: flex; flex-direction: column; flex: 1; overflow-y: auto; }
+    .card-back-title { font-family: var(--font-serif); font-size: 16px; line-height: 1.34; color: var(--text-main); font-weight: 700; margin-bottom: 9px; }
+    .detail-meta { background-color: #f6f7f3; border: 1px solid var(--border); border-radius: 6px; padding: 7px 10px; font-size: 12.5px; line-height: 1.5; color: var(--text-sub); margin-bottom: 10px; }
+    .detail-meta strong { color: var(--text-main); }
+    .detail-list-label { font-size: 11.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: 6px; }
+    .detail-list { list-style: none; display: flex; flex-direction: column; gap: 5px; font-size: 13px; line-height: 1.46; color: var(--text-main); }
+    .detail-list li { position: relative; padding-left: 14px; }
+    .detail-list li::before { content: "•"; position: absolute; left: 0; top: 0; color: var(--nk-green); font-weight: 700; }
+    .card-back-foot { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 8px; }
+    .back-price-row { display: flex; align-items: baseline; justify-content: space-between; font-size: 12.5px; color: var(--text-muted); }
+    .select-course-btn { width: 100%; padding: 9px 12px; border-radius: 6px; border: 1px solid var(--nk-green); background-color: var(--nk-green); color: #ffffff; font-size: 13.5px; font-weight: 600; cursor: pointer; transition: all 0.16s ease; }
+    .select-course-btn:hover { background-color: var(--nk-green-dark); }
+    .select-course-btn.selected { background-color: var(--nk-green-soft); color: var(--nk-green-dark); border-color: var(--nk-green); }
+    /* ===== GÓC ẢNH TRƯỜNG THPT NGUYỄN KHUYẾN Q.10 ===== */
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .gallery-card { background-color: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; display: flex; flex-direction: column; }
+    .gallery-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .gallery-card img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-bottom: 1px solid var(--border); }
+    .gallery-caption { padding: 11px 13px; flex: 1; }
+    .gallery-caption h3 { font-size: 14px; line-height: 1.4; color: var(--text-main); font-weight: 600; margin-bottom: 4px; }
+    .gallery-caption p { font-size: 12.5px; line-height: 1.5; color: var(--text-sub); }
+    /* ===== LỊCH HỌC, ĐỊA CHỈ & PHIẾU ĐĂNG KÝ ===== */
+    .schedule-register-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 22px; align-items: start; }
+    .panel { background-color: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 22px; }
+    .panel h3 { font-family: var(--font-serif); font-size: 19px; color: var(--text-main); font-weight: 700; margin-bottom: 6px; }
+    .panel-sub { font-size: 13.5px; color: var(--text-sub); margin-bottom: 16px; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 7px; margin-bottom: 18px; }
+    table { width: 100%; border-collapse: collapse; font-size: 13.5px; text-align: left; }
+    thead th { background-color: var(--nk-green-soft); color: var(--nk-green-dark); font-weight: 700; padding: 10px 12px; border-bottom: 1px solid var(--nk-green-line); white-space: nowrap; }
+    tbody td { padding: 10px 12px; border-bottom: 1px solid #edf0eb; color: var(--text-main); vertical-align: top; }
+    tbody tr:last-child td { border-bottom: none; }
+    tbody tr:hover { background-color: #fafbf8; }
+    .time-col { font-variant-numeric: tabular-nums; white-space: nowrap; color: var(--text-sub); }
+    .address-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+    .address-box { background-color: var(--bg-page); border: 1px solid var(--border); border-radius: 7px; padding: 12px 14px; }
+    .address-box span { display: block; font-size: 11.5px; font-weight: 700; text-transform: uppercase; color: var(--nk-green); margin-bottom: 4px; }
+    .address-box strong { display: block; font-size: 13.5px; color: var(--text-main); margin-bottom: 3px; }
+    .address-box p { font-size: 12.5px; color: var(--text-sub); line-height: 1.5; }
+    .promo-note { font-size: 13px; color: var(--nk-green-dark); background-color: var(--nk-green-soft); border-left: 3px solid var(--nk-green); padding: 10px 12px; border-radius: 0 6px 6px 0; }
+    /* Phiếu đăng ký bên phải */
+    .selected-box { background-color: var(--bg-page); border: 1px solid var(--border); border-radius: 7px; padding: 12px; margin-bottom: 16px; }
+    .selected-box-title { font-size: 13px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+    .selected-list { list-style: none; display: flex; flex-direction: column; gap: 7px; margin-bottom: 10px; }
+    .selected-list li { display: flex; align-items: center; justify-content: space-between; gap: 8px; background-color: #ffffff; border: 1px solid var(--border); border-radius: 6px; padding: 7px 10px; font-size: 13px; }
+    .selected-item-info { min-width: 0; }
+    .selected-item-info strong { display: block; font-size: 13px; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .selected-item-info span { font-size: 12px; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+    .remove-item-btn { border: none; background: transparent; color: var(--nk-red); font-size: 12.5px; font-weight: 600; cursor: pointer; padding: 3px 6px; border-radius: 4px; flex-shrink: 0; }
+    .remove-item-btn:hover { background-color: var(--nk-red-soft); }
+    .empty-selected { font-size: 13px; color: var(--text-muted); padding: 6px 2px; }
+    .tuition-summary { border-top: 1px dashed var(--border-strong); padding-top: 9px; font-size: 13px; display: flex; flex-direction: column; gap: 4px; }
+    .tuition-row { display: flex; justify-content: space-between; color: var(--text-sub); font-variant-numeric: tabular-nums; }
+    .tuition-row.discount { color: var(--nk-green); font-weight: 600; }
+    .tuition-row.total { color: var(--text-main); font-weight: 700; font-size: 14.5px; padding-top: 4px; }
+    .form-group { margin-bottom: 12px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 600; color: var(--text-main); margin-bottom: 5px; }
+    .form-group input, .form-group textarea { width: 100%; padding: 9px 11px; border: 1px solid var(--border-strong); border-radius: 6px; font-size: 14px; color: var(--text-main); background-color: #ffffff; transition: border-color 0.16s ease; }
+    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--nk-green); box-shadow: 0 0 0 3px rgba(31, 110, 61, 0.12); }
+    .form-result { display: none; margin-top: 12px; padding: 11px 13px; border-radius: 6px; font-size: 13.5px; line-height: 1.55; background-color: var(--nk-green-soft); border: 1px solid var(--nk-green-line); color: var(--nk-green-dark); }
+    .form-result.show { display: block; }
+    .form-result.warn { background-color: var(--nk-gold-soft); border-color: #e6d194; color: #7c5600; }
+    /* ===== FOOTER CUỐI TRANG (BẮT BUỘC GIỮ TÊN & LỚP) ===== */
+    .site-footer { background-color: #ffffff; border-top: 3px solid var(--nk-green); padding: 24px 0 28px; margin-top: 20px; }
+    .footer-inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px; }
+    .footer-school { display: flex; align-items: center; gap: 12px; }
+    .footer-logo { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 1px solid var(--nk-green-line); padding: 2px; background: #ffffff; flex-shrink: 0; }
+    .footer-school strong { display: block; font-family: var(--font-serif); font-size: 15.5px; color: var(--nk-green-dark); }
+    .footer-school span { display: block; font-size: 13px; color: var(--text-sub); }
+    .footer-student { background-color: var(--nk-green-soft); border: 1px solid var(--nk-green-line); border-radius: 8px; padding: 10px 16px; text-align: right; }
+    .footer-student strong { display: block; font-size: 14px; color: var(--nk-green-dark); }
+    .footer-student span { display: block; font-size: 12.5px; color: var(--text-sub); margin-top: 2px; }
+    /* ===== HỘP XEM ẢNH PHÓNG TO ĐƠN GIẢN ===== */
+    .lightbox { position: fixed; inset: 0; z-index: 60; background-color: rgba(20, 28, 23, 0.78); display: none; align-items: center; justify-content: center; padding: 20px; }
+    .lightbox.open { display: flex; }
+    .lightbox-box { background-color: #ffffff; border-radius: var(--radius); max-width: 760px; width: 100%; overflow: hidden; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28); }
+    .lightbox-top { position: relative; background-color: #161d18; }
+    .lightbox-top img { width: 100%; max-height: 68vh; object-fit: contain; margin: 0 auto; }
+    .lightbox-close { position: absolute; top: 10px; right: 10px; width: 34px; height: 34px; border-radius: 50%; border: none; background-color: rgba(255, 255, 255, 0.92); color: var(--text-main); font-size: 18px; line-height: 1; cursor: pointer; }
+    .lightbox-caption { padding: 14px 18px; }
+    .lightbox-caption h4 { font-family: var(--font-serif); font-size: 17px; color: var(--text-main); margin-bottom: 4px; }
+    .lightbox-caption p { font-size: 13.5px; color: var(--text-sub); }
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 980px) {
+    .hero-card { grid-template-columns: 1fr; padding: 22px; }
+    .courses-grid { grid-template-columns: repeat(2, 1fr); }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .schedule-register-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 780px) {
+    .main-nav { display: none; }
+    .menu-toggle { display: inline-flex; }
+    .nk-logo-big { width: 68px; height: 68px; }
+    .brand-text h2 { font-size: 17px; }
+    .brand-text p { font-size: 12px; }
+    .hero-title { font-size: 24px; }
+    .hero-facts { grid-template-columns: 1fr; gap: 10px; }
+    .address-grid { grid-template-columns: 1fr; }
+    .footer-student { width: 100%; text-align: left; }
+    }
+    @media (max-width: 600px) {
+    .courses-grid { grid-template-columns: 1fr; }
+    .flip-card { height: 480px; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Thanh thông tin học sinh thực hiện ở đầu trang -->
+  <div class="student-topbar">
+    <div class="container student-topbar-inner">
+      <div class="student-credit">
+        <span class="class-tag">Lớp 12L2</span>
+        <span>Học sinh thực hiện: <strong>Lưu Văn Hoan – Lớp 12L2</strong></span>
+      </div>
+      <div class="school-note">
+        Trường THPT Nguyễn Khuyến • Số 50 Thành Thái, Quận 10, TP.HCM
+      </div>
+    </div>
+  </div>
+
+  <!-- Thanh tiêu đề chính kèm Logo NK to bên trái trên cùng -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#gioi-thieu" class="brand-link" aria-label="Về đầu trang Lớp Học Thêm NK">
+        <img
+          class="nk-logo-big"
+          src="https://filethpt.hcm.shieldix.app/UploadImages/Config/thptnguyenkhuyen/Logo_NK_Big.jpg"
+          alt="Logo Trường THPT Nguyễn Khuyến Quận 10"
+          referrerpolicy="no-referrer"
+        />
+        <div class="brand-text">
+          <h2>Lớp Học Thêm &amp; Ôn Thi NK</h2>
+          <p>Khối A01 • ĐGNL V-ACT • IELTS — Khu vực Quận 10</p>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Điều hướng trang">
+        <a href="#gioi-thieu" class="nav-link">Giới thiệu</a>
+        <a href="#khoa-hoc" class="nav-link">Các khoá học</a>
+        <a href="#hinh-anh" class="nav-link">Hình ảnh NK</a>
+        <a href="#lich-dang-ky" class="nav-link">Lịch học &amp; Địa chỉ</a>
+        <a href="#dang-ky" class="selected-pill-link">
+          <span>Đã chọn</span>
+          <span id="headerSelectedCount" class="selected-count">1</span>
+        </a>
+      </nav>
+
+      <button id="menuToggleBtn" class="menu-toggle" type="button" aria-label="Mở menu điều hướng" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7"></line>
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="17" x2="20" y2="17"></line>
+        </svg>
+      </button>
+    </div>
+
+    <nav id="mobileNav" class="mobile-nav" aria-label="Menu di động">
+      <a href="#gioi-thieu">Giới thiệu</a>
+      <a href="#khoa-hoc">Các khoá học</a>
+      <a href="#hinh-anh">Hình ảnh NK</a>
+      <a href="#dang-ky">Lịch học &amp; Đăng ký</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- ==================== 1. GIỚI THIỆU ==================== -->
+    <section id="gioi-thieu">
+      <div class="hero-card">
+        <div>
+          <div class="hero-kicker">Dự án Google Sites • Lưu Văn Hoan – Lớp 12L2</div>
+          <h1 class="hero-title">Các lớp học thêm &amp; ôn thi Khối 12 gần THPT Nguyễn Khuyến</h1>
+          <p class="hero-desc">
+            Trang web tổng hợp thông tin các lớp học thêm buổi tối môn Toán, Vật Lý, Tiếng Anh (IELTS)
+            và luyện thi Đánh giá năng lực ĐHQG TP.HCM (V-ACT) quanh khu vực đường Thành Thái, Quận 10.
+            Bạn có thể nhấp trực tiếp vào từng thẻ khoá học bên dưới để lật xem lịch học và nội dung chi tiết.
+          </p>
+
+          <div class="hero-facts">
+            <div class="fact-item">
+              <span>Trọng tâm ôn thi</span>
+              <strong>Khối A01 &amp; V-ACT</strong>
+            </div>
+            <div class="fact-item">
+              <span>Giờ học buổi tối</span>
+              <strong>18:00 – 21:00</strong>
+            </div>
+            <div class="fact-item">
+              <span>Địa điểm học</span>
+              <strong>Gần 50 Thành Thái, Q.10</strong>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#khoa-hoc" class="btn btn-primary">Xem các khoá học</a>
+            <a href="#lich-dang-ky" class="btn btn-outline">Xem lịch học tuần</a>
+          </div>
+        </div>
+
+        <figure class="hero-photo-box">
+          <img
+            src="https://filethpt.hcm.shieldix.app/UploadImages/news//2026/thptnguyenkhuyen/tnphung/chaoco_261020261523.jpg?w=800"
+            alt="Toàn cảnh sân trường THPT Nguyễn Khuyến Quận 10 trong giờ chào cờ"
+            referrerpolicy="no-referrer"
+          />
+          <figcaption>Sân trường THPT Nguyễn Khuyến — Số 50 Thành Thái, Phường 12, Quận 10, TP.HCM.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ==================== 2. CÁC KHOÁ HỌC (THẺ LẬT 3D) ==================== -->
+    <section id="khoa-hoc" class="section-block">
+      <div class="section-head">
+        <div>
+          <h2>Danh sách các khoá học thêm</h2>
+          <p>Nhấp vào từng thẻ hình ảnh để lật sang mặt sau xem giáo viên, lịch học và nội dung ôn tập.</p>
+        </div>
+      </div>
+
+      <div class="course-toolbar">
+        <div id="filterGroup" class="filter-group" role="tablist" aria-label="Lọc theo môn học">
+          <button type="button" class="filter-btn active" data-category="all">Tất cả (6)</button>
+          <button type="button" class="filter-btn" data-category="Toán">Toán</button>
+          <button type="button" class="filter-btn" data-category="Vật Lý">Vật Lý</button>
+          <button type="button" class="filter-btn" data-category="Tiếng Anh">Tiếng Anh</button>
+          <button type="button" class="filter-btn" data-category="ĐGNL V-ACT">ĐGNL V-ACT</button>
+          <button type="button" class="filter-btn" data-category="Tự học">Tự học</button>
+        </div>
+
+        <button id="flipAllBtn" type="button" class="flip-all-btn">Lật xem tất cả</button>
+      </div>
+
+      <div id="coursesGrid" class="courses-grid"></div>
+    </section>
+
+    <!-- ==================== 3. HÌNH ẢNH THPT NGUYỄN KHUYẾN Q.10 ==================== -->
+    <section id="hinh-anh" class="section-block">
+      <div class="section-head">
+        <div>
+          <h2>Một vài hình ảnh THPT Nguyễn Khuyến Q.10</h2>
+          <p>Không gian học tập và hoạt động quen thuộc tại trường (nhấp vào ảnh để xem rõ hơn).</p>
+        </div>
+      </div>
+
+      <div id="galleryGrid" class="gallery-grid"></div>
+    </section>
+
+    <!-- ==================== 4. LỊCH HỌC, ĐỊA CHỈ & ĐĂNG KÝ ==================== -->
+    <section id="lich-dang-ky" class="section-block">
+      <div class="section-head">
+        <div>
+          <h2>Lịch học buổi tối &amp; Đăng ký tham gia</h2>
+          <p>Lịch học sắp xếp gọn ngoài giờ chính khoá, thuận tiện đi bộ từ cổng trường THPT Nguyễn Khuyến.</p>
+        </div>
+      </div>
+
+      <div class="schedule-register-grid">
+        <!-- Cột trái: Thời khoá biểu + địa chỉ -->
+        <div class="panel">
+          <h3>Thời khoá biểu các lớp trong tuần</h3>
+          <p class="panel-sub">Các lớp mở cố định từ Thứ 2 đến Chủ Nhật tại khu vực Phường 12, Quận 10.</p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Ngày học</th>
+                  <th>Khung giờ</th>
+                  <th>Lớp chuyên đề</th>
+                  <th>Phòng học</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Thứ Hai</strong></td>
+                  <td class="time-col">18:00 – 21:00</td>
+                  <td>Toán 12 Thực Chiến &amp; Bấm Máy Casio</td>
+                  <td>P.201 – Khu Thành Thái</td>
+                </tr>
+                <tr>
+                  <td><strong>Thứ Ba</strong></td>
+                  <td class="time-col">18:00 – 21:00</td>
+                  <td>Vật Lý 12 Bản Chất &amp; Luyện Đề A01</td>
+                  <td>P.202 – Khu Thành Thái</td>
+                </tr>
+                <tr>
+                  <td><strong>Thứ Năm</strong></td>
+                  <td class="time-col">18:00 – 21:00</td>
+                  <td>Tiếng Anh THPT &amp; Luyện Thi IELTS</td>
+                  <td>P.301 – Khu đường 3/2</td>
+                </tr>
+                <tr>
+                  <td><strong>Thứ Bảy</strong></td>
+                  <td class="time-col">14:00 – 17:00</td>
+                  <td>Toán Tư Duy Logic &amp; Xác Suất V-ACT</td>
+                  <td>P.201 – Khu Thành Thái</td>
+                </tr>
+                <tr>
+                  <td><strong>Chủ Nhật</strong></td>
+                  <td class="time-col">18:00 – 21:00</td>
+                  <td>Tổng Ôn Đánh Giá Năng Lực V-ACT Đợt 1</td>
+                  <td>Hội trường nhỏ Q.10</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="address-grid">
+            <div class="address-box">
+              <span>Cơ sở lớp học chính</span>
+              <strong>Khu đường Thành Thái, P.12, Quận 10</strong>
+              <p>Cách cổng trường THPT Nguyễn Khuyến (50 Thành Thái) khoảng 3 phút đi bộ.</p>
+            </div>
+            <div class="address-box">
+              <span>Lớp Tiếng Anh &amp; Phòng tự học</span>
+              <strong>Khu đường 3 Tháng 2, P.12, Quận 10</strong>
+              <p>Có máy lạnh, bàn học yên tĩnh và tủ tài liệu luyện đề khối A01, V-ACT.</p>
+            </div>
+          </div>
+
+          <div class="promo-note">
+            <strong>Ghi chú học phí:</strong> Khi đăng ký từ <strong>2 khoá học trở lên</strong>,
+            học phí dự kiến được giảm <strong>15%</strong> và có sẵn tập tài liệu in phát tại lớp.
+          </div>
+        </div>
+
+        <!-- Cột phải: Phiếu đăng ký đồng bộ với thẻ lật -->
+        <div id="dang-ky" class="panel">
+          <h3>Phiếu đăng ký học thử</h3>
+          <p class="panel-sub">Lật thẻ khoá học ở trên để thêm hoặc bỏ môn bạn quan tâm.</p>
+
+          <div class="selected-box">
+            <div class="selected-box-title">
+              <span>Khoá học đã chọn</span>
+              <span id="formSelectedCount">1 môn</span>
+            </div>
+            <ul id="selectedCourseList" class="selected-list"></ul>
+            <div id="tuitionSummary" class="tuition-summary"></div>
+          </div>
+
+          <form id="registerForm">
+            <div class="form-group">
+              <label for="studentName">Họ và tên học sinh</label>
+              <input id="studentName" type="text" required placeholder="Ví dụ: Nguyễn Minh Anh" />
+            </div>
+            <div class="form-group">
+              <label for="studentClass">Lớp / Trường</label>
+              <input id="studentClass" type="text" required placeholder="Ví dụ: 12L2 – THPT Nguyễn Khuyến" />
+            </div>
+            <div class="form-group">
+              <label for="studentPhone">Số điện thoại hoặc Zalo</label>
+              <input id="studentPhone" type="tel" required placeholder="Ví dụ: 0901 234 567" />
+            </div>
+            <div class="form-group">
+              <label for="studentNote">Ghi chú (không bắt buộc)</label>
+              <textarea id="studentNote" rows="2" placeholder="Ví dụ: Em muốn đăng ký học thử tối Thứ 2..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">
+              Gửi thông tin đăng ký
+            </button>
+          </form>
+
+          <div id="formResult" class="form-result" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Chân trang giữ đầy đủ thông tin học sinh & lớp 12L2 -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-school">
+        <img
+          class="footer-logo"
+          src="https://filethpt.hcm.shieldix.app/UploadImages/Config/thptnguyenkhuyen/Logo_NK_Big.jpg"
+          alt="Logo THPT Nguyễn Khuyến Quận 10"
+          referrerpolicy="no-referrer"
+        />
+        <div>
+          <strong>Lớp Học Thêm &amp; Ôn Thi NK Quận 10</strong>
+          <span>Trường THPT Nguyễn Khuyến • 50 Thành Thái, Phường 12, Quận 10, TP.HCM</span>
+        </div>
+      </div>
+
+      <div class="footer-student">
+        <strong>Học sinh thực hiện: Lưu Văn Hoan – Lớp 12L2</strong>
+        <span>Sản phẩm bài tập Google Sites • Năm học 2026–2027</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Hộp xem ảnh phóng to khi nhấp vào ảnh thư viện -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
+    <div class="lightbox-box">
+      <div class="lightbox-top">
+        <img id="lightboxImg" alt="Ảnh phóng to Trường THPT Nguyễn Khuyến Q.10" referrerpolicy="no-referrer" />
+        <button id="lightboxClose" class="lightbox-close" type="button" aria-label="Đóng ảnh">&times;</button>
+      </div>
+      <div class="lightbox-caption">
+        <h4 id="lightboxTitle"></h4>
+        <p id="lightboxDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Dữ liệu 6 khoá học — sử dụng ảnh thật từ trang THPT Nguyễn Khuyến Q.10 và ảnh học tập cơ bản
+    const COURSES = [
+      {
+        id: 'math-12',
+        title: 'Toán 12 Thực Chiến & Bấm Máy Casio',
+        category: 'Toán',
+        catClass: '',
+        price: 650000,
+        teacher: 'Thầy Minh Quân (Chuyên Toán A01)',
+        schedule: 'Thứ 2 (18:00 – 21:00) • P.201 Thành Thái',
+        summary: 'Ôn hàm số, hình Oxyz và kỹ thuật bấm Casio Fx-580/880 giải nhanh trắc nghiệm.',
+        image: 'https://images.pexels.com/photos/8250939/pexels-photo-8250939.jpeg?auto=compress&cs=tinysrgb&w=800',
+        details: [
+          'Ôn chắc khảo sát hàm số, cực trị và các bài toán tối ưu thực tế',
+          'Hệ thống hình học không gian Oxyz, phương trình mặt cầu, đường thẳng',
+          'Mẹo bấm máy tính Casio và Flexio xử lý nhanh câu hỏi trắc nghiệm'
+        ]
+      },
+      {
+        id: 'physics-12',
+        title: 'Vật Lý 12 Bản Chất & Luyện Đề A01',
+        category: 'Vật Lý',
+        catClass: 'cat-ly',
+        price: 600000,
+        teacher: 'Thầy Hoàng Nam (Thạc sĩ Vật Lý)',
+        schedule: 'Thứ 3 (18:00 – 21:00) • P.202 Thành Thái',
+        summary: 'Học hiểu bản chất lý thuyết, đọc đồ thị và luyện đề bám sát tổ hợp Khối A01.',
+        image: 'https://filethpt.hcm.shieldix.app/dataqig/2026/thptnguyenkhuyen/noidung/anh/tnphung/11/17/sanpham_171120261214.jpg?w=800',
+        details: [
+          'Nắm rõ dao động cơ, sóng cơ, giao thoa ánh sáng và bài tập thực nghiệm',
+          'Giải gọn bài toán dòng điện xoay chiều, mạch RLC và đồ thị vật lý',
+          'Chữa kỹ các câu lý thuyết dễ nhầm dấu trong đề thi tốt nghiệp'
+        ]
+      },
+      {
+        id: 'english-ielts',
+        title: 'Tiếng Anh THPT & Luyện Thi IELTS 6.5–7.0',
+        category: 'Tiếng Anh',
+        catClass: 'cat-anh',
+        price: 750000,
+        teacher: 'Cô Thảo Vy (IELTS 8.5 Overall)',
+        schedule: 'Thứ 5 (18:00 – 21:00) • P.301 đường 3/2',
+        summary: 'Hệ thống từ vựng học thuật, luyện 4 kỹ năng IELTS và bám sát đề thi THPT.',
+        image: 'https://images.pexels.com/photos/29242209/pexels-photo-29242209.jpeg?auto=compress&cs=tinysrgb&w=800',
+        details: [
+          'Rèn kỹ thuật đọc hiểu (Reading) và nghe (Listening) theo áp lực thời gian',
+          'Chấm, sửa trực tiếp bài Writing Task 1 và Task 2 hằng tuần',
+          'Tổng ôn ngữ pháp và từ vựng trọng tâm cho kỳ thi THPT Quốc gia'
+        ]
+      },
+      {
+        id: 'vact-master',
+        title: 'Tổng Ôn Đánh Giá Năng Lực (V-ACT Đợt 1)',
+        category: 'ĐGNL V-ACT',
+        catClass: 'cat-vact',
+        price: 820000,
+        teacher: 'Nhóm giáo viên luyện thi ĐHQG TP.HCM',
+        schedule: 'Chủ Nhật (18:00 – 21:00) • Hội trường nhỏ Q.10',
+        summary: 'Luyện đề chuẩn cấu trúc 120 câu ĐHQG TP.HCM, hướng tới mốc điểm 950+.',
+        image: 'https://filethpt.hcm.shieldix.app/dataqig/2026/thptnguyenkhuyen/noidung/anh/tnphung/11/08/gv-noi_81120261643.jpg?w=800',
+        details: [
+          'Rèn phần tư duy logic, phân tích số liệu và đọc hiểu tiếng Việt – Anh',
+          'Thi thử trên giấy chuẩn cấu trúc 120 câu (150 phút) vào cuối mỗi tháng',
+          'Phân tích chi tiết đề thi và cách chia thời gian hợp lý khi vào phòng thi'
+        ]
+      },
+      {
+        id: 'math-vact-logic',
+        title: 'Toán Tư Duy Logic & Xác Suất V-ACT',
+        category: 'Toán',
+        catClass: '',
+        price: 550000,
+        teacher: 'Thầy Minh Quân',
+        schedule: 'Thứ 7 (14:00 – 17:00) • P.201 Thành Thái',
+        summary: 'Chuyên đề bổ trợ bảng số liệu, biểu đồ và xác suất thống kê cho kỳ thi ĐGNL.',
+        image: 'https://filethpt.hcm.shieldix.app/dataqig/2026/thptnguyenkhuyen/noidung/anh/tnphung/11/08/cham_81120261733.jpg?w=800',
+        details: [
+          'Đọc nhanh và xử lý chính xác câu hỏi biểu đồ, bảng số liệu khoa học',
+          'Ôn các dạng toán thực tế về tối ưu chi phí, chuyển động và tổ hợp',
+          'Phát kèm tập bài tập tự luyện theo chuyên đề có lời giải chi tiết'
+        ]
+      },
+      {
+        id: 'self-study-lab',
+        title: 'Phòng Tự Học Tối & Kèm Bài Tập 1-1',
+        category: 'Tự học',
+        catClass: '',
+        price: 490000,
+        teacher: 'Anh chị sinh viên trợ giảng Khối A01',
+        schedule: 'Các tối trong tuần (17:30 – 21:00) • Khu Q.10',
+        summary: 'Không gian tự học yên tĩnh gần trường NK, có người giải đáp ngay khi gặp câu khó.',
+        image: 'https://filethpt.hcm.shieldix.app/dataqig/2026/thptnguyenkhuyen/tailen/anh/nttdung/11/23/ha-tt-xay-dung-truong-hoc-xanh_231120262051.jpg?w=800',
+        details: [
+          'Phòng tự học có máy lạnh, bàn rộng và ánh sáng tốt gần đường Thành Thái',
+          'Hỏi bài trực tiếp anh chị trợ giảng khi làm phiếu bài tập trên lớp',
+          'Dùng chung tủ sách tham khảo và bộ đề thi thử của các trường THPT'
+        ]
+      }
+    ];
+
+    // Bộ ảnh thật của Trường THPT Nguyễn Khuyến Quận 10
+    const NK_GALLERY = [
+      {
+        title: 'Sân trường THPT Nguyễn Khuyến giờ chào cờ',
+        desc: 'Không gian sân trường rộng và rợp bóng cây xanh quen thuộc mỗi sáng đầu tuần.',
+        image: 'https://filethpt.hcm.shieldix.app/UploadImages/news//2026/thptnguyenkhuyen/tnphung/chaoco_261020261523.jpg?w=800'
+      },
+      {
+        title: 'Dãy phòng học tại 50 Thành Thái, Q.10',
+        desc: 'Khuôn viên trường sạch đẹp, xanh mát nằm ngay khu trung tâm Phường 12, Quận 10.',
+        image: 'https://filethpt.hcm.shieldix.app/dataqig/2026/thptnguyenkhuyen/tailen/anh/nttdung/11/23/ha-tt-xay-dung-truong-hoc-xanh_231120262051.jpg?w=800'
+      },
+      {
+        title: 'Hoạt động Nghiên cứu Khoa học Kỹ thuật',
+        desc: 'Học sinh và thầy cô NK trao đổi, nhận xét bài thuyết trình ngay tại phòng sinh hoạt.',
+        image: 'https://filethpt.hcm.shieldix.app/dataqig/2026/thptnguyenkhuyen/noidung/anh/tnphung/11/08/chambai_81120261729.jpg?w=800'
+      },
+      {
+        title: 'Kỷ niệm dãy lớp học 4 tầng Nguyễn Khuyến',
+        desc: 'Góc hành lang quen thuộc gắn bó 3 năm cấp 3 của các thế hệ học sinh NK Quận 10.',
+        image: 'https://filethpt.hcm.shieldix.app/UploadImages/thptnguyenkhuyen/65224209_403658526907428_141680207906996224_n.jpg?w=800'
+      }
+    ];
+
+    const state = {
+      category: 'all',
+      selectedIds: ['math-12'],
+      flippedIds: new Set()
+    };
+
+    function formatVnd(amount) {
+      return amount.toLocaleString('vi-VN') + 'đ';
+    }
+
+    function getVisibleCourses() {
+      if (state.category === 'all') return COURSES;
+      return COURSES.filter((c) => c.category === state.category);
+    }
+
+    function updateFlipAllButton() {
+      const btn = document.getElementById('flipAllBtn');
+      const visible = getVisibleCourses();
+      const allFlipped = visible.length > 0 && visible.every((c) => state.flippedIds.has(c.id));
+      btn.textContent = allFlipped ? 'Úp lại tất cả' : 'Lật xem tất cả';
+    }
+
+    function renderCourses() {
+      const grid = document.getElementById('coursesGrid');
+      const visible = getVisibleCourses();
+
+      grid.innerHTML = visible.map((course) => {
+        const isFlipped = state.flippedIds.has(course.id);
+        const isSelected = state.selectedIds.includes(course.id);
+
+        return `
+          <article
+            class="flip-card ${isFlipped ? 'is-flipped' : ''} ${isSelected ? 'is-selected' : ''}"
+            data-course-id="${course.id}"
+            tabindex="0"
+            role="button"
+            aria-pressed="${isFlipped ? 'true' : 'false'}"
+            aria-label="Khoá học ${course.title}. Nhấp để lật xem thông tin chi tiết."
+          >
+            <div class="flip-card-inner">
+              <!-- MẶT TRƯỚC: ẢNH CƠ BẢN + THÔNG TIN GỌN -->
+              <div class="card-face card-front">
+                <img
+                  class="card-front-photo"
+                  src="${course.image}"
+                  alt="${course.title}"
+                  loading="lazy"
+                  referrerpolicy="no-referrer"
+                />
+                <div class="card-front-body">
+                  <div class="card-meta-row">
+                    <span class="subject-label ${course.catClass}">${course.category}</span>
+                    ${isSelected ? '<span class="picked-badge">✓ Đã chọn</span>' : ''}
+                  </div>
+                  <h3 class="card-front-title">${course.title}</h3>
+                  <p class="card-front-summary">${course.summary}</p>
+                  <div class="card-front-foot">
+                    <div class="course-price">${formatVnd(course.price)} <small>/ tháng</small></div>
+                    <span class="flip-hint">Nhấp để lật &#8635;</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- MẶT SAU: CHI TIẾT KHOÁ HỌC KHI LẬT -->
+              <div class="card-face card-back">
+                <div class="card-back-head">
+                  <span>Chi tiết • ${course.category}</span>
+                  <button type="button" class="flip-back-btn" data-flip-back="${course.id}">&#8634; Lật lại</button>
+                </div>
+                <div class="card-back-body">
+                  <h3 class="card-back-title">${course.title}</h3>
+                  <div class="detail-meta">
+                    <div><strong>Giáo viên:</strong> ${course.teacher}</div>
+                    <div><strong>Lịch học:</strong> ${course.schedule}</div>
+                  </div>
+                  <div class="detail-list-label">Nội dung trọng tâm</div>
+                  <ul class="detail-list">
+                    ${course.details.map((item) => `<li>${item}</li>`).join('')}
+                  </ul>
+                  <div class="card-back-foot">
+                    <div class="back-price-row">
+                      <span>Học phí: <strong style="color: var(--nk-green-dark);">${formatVnd(course.price)}/tháng</strong></span>
+                      <span>Giảm 15% từ 2 môn</span>
+                    </div>
+                    <button
+                      type="button"
+                      class="select-course-btn ${isSelected ? 'selected' : ''}"
+                      data-toggle-select="${course.id}"
+                    >
+                      ${isSelected ? '✓ Đã chọn đăng ký (Bấm để bỏ)' : '+ Chọn đăng ký khoá này'}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      updateFlipAllButton();
+    }
+
+    function renderGallery() {
+      const grid = document.getElementById('galleryGrid');
+      grid.innerHTML = NK_GALLERY.map((item, idx) => `
+        <figure class="gallery-card" data-gallery-idx="${idx}" tabindex="0" role="button" aria-label="Xem ảnh: ${item.title}">
+          <img src="${item.image}" alt="${item.title}" loading="lazy" referrerpolicy="no-referrer" />
+          <figcaption class="gallery-caption">
+            <h3>${item.title}</h3>
+            <p>${item.desc}</p>
+          </figcaption>
+        </figure>
+      `).join('');
+    }
+
+    function renderSelectedSummary() {
+      const count = state.selectedIds.length;
+      document.getElementById('headerSelectedCount').textContent = String(count);
+      document.getElementById('formSelectedCount').textContent = count + ' môn';
+
+      const listEl = document.getElementById('selectedCourseList');
+      const summaryEl = document.getElementById('tuitionSummary');
+      const picked = COURSES.filter((c) => state.selectedIds.includes(c.id));
+
+      if (picked.length === 0) {
+        listEl.innerHTML = '<li class="empty-selected">Chưa chọn khoá học nào. Bạn hãy lật một thẻ ở trên để chọn môn nhé.</li>';
+        summaryEl.innerHTML = '';
+        return;
+      }
+
+      listEl.innerHTML = picked.map((c) => `
+        <li>
+          <div class="selected-item-info">
+            <strong title="${c.title}">${c.title}</strong>
+            <span>${formatVnd(c.price)} / tháng</span>
+          </div>
+          <button type="button" class="remove-item-btn" data-remove-course="${c.id}">Bỏ</button>
+        </li>
+      `).join('');
+
+      const subtotal = picked.reduce((sum, c) => sum + c.price, 0);
+      const discount = picked.length >= 2 ? Math.round(subtotal * 0.15) : 0;
+      const total = subtotal - discount;
+
+      summaryEl.innerHTML = `
+        <div class="tuition-row">
+          <span>Tạm tính (${picked.length} môn):</span>
+          <span>${formatVnd(subtotal)}</span>
+        </div>
+        ${discount > 0 ? `
+          <div class="tuition-row discount">
+            <span>Ưu đãi chọn từ 2 môn (-15%):</span>
+            <span>-${formatVnd(discount)}</span>
+          </div>
+        ` : ''}
+        <div class="tuition-row total">
+          <span>Dự kiến học phí / tháng:</span>
+          <span>${formatVnd(total)}</span>
+        </div>
+      `;
+    }
+
+    function toggleSelectCourse(courseId) {
+      const idx = state.selectedIds.indexOf(courseId);
+      if (idx === -1) {
+        state.selectedIds.push(courseId);
+      } else {
+        state.selectedIds.splice(idx, 1);
+      }
+      renderCourses();
+      renderSelectedSummary();
+    }
+
+    function toggleFlipCard(courseId) {
+      if (state.flippedIds.has(courseId)) {
+        state.flippedIds.delete(courseId);
+      } else {
+        state.flippedIds.add(courseId);
+      }
+      const card = document.querySelector(`.flip-card[data-course-id="${courseId}"]`);
+      if (card) {
+        const flipped = state.flippedIds.has(courseId);
+        card.classList.toggle('is-flipped', flipped);
+        card.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+      }
+      updateFlipAllButton();
+    }
+
+    function openLightbox(idx) {
+      const item = NK_GALLERY[idx];
+      if (!item) return;
+      document.getElementById('lightboxImg').src = item.image;
+      document.getElementById('lightboxImg').alt = item.title;
+      document.getElementById('lightboxTitle').textContent = item.title;
+      document.getElementById('lightboxDesc').textContent = item.desc;
+      document.getElementById('lightbox').classList.add('open');
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+    }
+
+    // Khởi tạo sự kiện khi trang tải xong
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCourses();
+      renderGallery();
+      renderSelectedSummary();
+
+      // Menu di động
+      const menuBtn = document.getElementById('menuToggleBtn');
+      const mobileNav = document.getElementById('mobileNav');
+      menuBtn.addEventListener('click', () => {
+        const isOpen = mobileNav.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+      mobileNav.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A') {
+          mobileNav.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Lọc theo môn học
+      document.getElementById('filterGroup').addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        state.category = btn.getAttribute('data-category');
+        document.querySelectorAll('.filter-btn').forEach((b) => {
+          b.classList.toggle('active', b === btn);
+        });
+        renderCourses();
+      });
+
+      // Nút lật xem tất cả / úp lại tất cả
+      document.getElementById('flipAllBtn').addEventListener('click', () => {
+        const visible = getVisibleCourses();
+        const allFlipped = visible.length > 0 && visible.every((c) => state.flippedIds.has(c.id));
+        visible.forEach((c) => {
+          if (allFlipped) state.flippedIds.delete(c.id);
+          else state.flippedIds.add(c.id);
+        });
+        renderCourses();
+      });
+
+      // Xử lý nhấp vào thẻ khoá học để lật hoặc bấm nút chọn đăng ký ở mặt sau
+      const coursesGrid = document.getElementById('coursesGrid');
+      coursesGrid.addEventListener('click', (e) => {
+        const selectBtn = e.target.closest('[data-toggle-select]');
+        if (selectBtn) {
+          e.stopPropagation();
+          toggleSelectCourse(selectBtn.getAttribute('data-toggle-select'));
+          return;
+        }
+        const backBtn = e.target.closest('[data-flip-back]');
+        if (backBtn) {
+          e.stopPropagation();
+          toggleFlipCard(backBtn.getAttribute('data-flip-back'));
+          return;
+        }
+        const card = e.target.closest('.flip-card');
+        if (card) {
+          toggleFlipCard(card.getAttribute('data-course-id'));
+        }
+      });
+
+      coursesGrid.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        if (e.target.closest('button')) return;
+        const card = e.target.closest('.flip-card');
+        if (card) {
+          e.preventDefault();
+          toggleFlipCard(card.getAttribute('data-course-id'));
+        }
+      });
+
+      // Xoá môn ngay trong khung phiếu đăng ký
+      document.getElementById('selectedCourseList').addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-remove-course]');
+        if (btn) {
+          toggleSelectCourse(btn.getAttribute('data-remove-course'));
+        }
+      });
+
+      // Xem phóng to ảnh thư viện NK
+      const galleryGrid = document.getElementById('galleryGrid');
+      galleryGrid.addEventListener('click', (e) => {
+        const card = e.target.closest('[data-gallery-idx]');
+        if (card) openLightbox(Number(card.getAttribute('data-gallery-idx')));
+      });
+      galleryGrid.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        const card = e.target.closest('[data-gallery-idx]');
+        if (card) {
+          e.preventDefault();
+          openLightbox(Number(card.getAttribute('data-gallery-idx')));
+        }
+      });
+
+      document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+      document.getElementById('lightbox').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) closeLightbox();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+      });
+
+      // Gửi phiếu đăng ký mẫu
+      document.getElementById('registerForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const resultEl = document.getElementById('formResult');
+        const name = document.getElementById('studentName').value.trim();
+        const cls = document.getElementById('studentClass').value.trim();
+        const phone = document.getElementById('studentPhone').value.trim();
+
+        if (state.selectedIds.length === 0) {
+          resultEl.className = 'form-result show warn';
+          resultEl.textContent = 'Bạn chưa chọn khoá học nào. Hãy lật ít nhất 1 thẻ khoá học ở trên rồi bấm "Chọn đăng ký khoá này" nhé.';
+          return;
+        }
+
+        const chosenTitles = COURSES
+          .filter((c) => state.selectedIds.includes(c.id))
+          .map((c) => c.title)
+          .join(', ');
+
+        resultEl.className = 'form-result show';
+        resultEl.innerHTML =
+          `<strong>Đã lưu thông tin đăng ký mẫu!</strong><br>` +
+          `Học sinh: <strong>${name}</strong> (${cls}) – Liên hệ: ${phone}.<br>` +
+          `Khoá đã chọn (${state.selectedIds.length}): ${chosenTitles}.`;
+        e.target.reset();
+      });
+    });
+  </script>
+</body>
+</html>
